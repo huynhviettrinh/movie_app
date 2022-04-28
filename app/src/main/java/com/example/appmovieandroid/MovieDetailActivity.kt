@@ -451,6 +451,7 @@ class MovieDetailActivity : AppCompatActivity() {
         buttonPlayPause.setImageResource(R.drawable.netflix_pause_button)
         simpleExoPlayer.play()
 
+
     }
 
     // handle ham su ly duration

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/trinh/.gradle/caches/transforms-3/08ddfd0e46e8b96059774e0485044a5a/transformed/ImageSlideshow-0.1.0/res/drawable/default_unselected_dot.xml" value="0.2505" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable-v24/gradient_nav_bar.xml" value="0.13" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/border_block.xml" value="0.19" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/border_nlock.xml" value="0.1655" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/custom_thumb.xml" value="0.1515" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/dialog_background.xml" value="0.2025" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/edit.xml" value="0.1515" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/error_background.xml" value="0.227" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/gradient_background.xml" value="0.1735" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_add_24.xml" value="0.122" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_audio_track.xml" value="0.139" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_back.xml" value="0.137" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_baseline_brightness.xml" value="0.1295" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_baseline_format_list_bulleted_24.xml" value="0.2025" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_baseline_keyboard_backspace_24.xml" value="0.178" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_baseline_sort_24.xml" value="0.178" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_down.xml" value="0.122" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_email.xml" value="0.159" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_error_24.xml" value="0.122" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_forward.xml" value="0.122" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_menu.xml" value="0.178" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_menu_more.xml" value="0.122" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_play.xml" value="0.2" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_play_24.xml" value="0.122" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_replay.xml" value="0.122" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_rewind.xml" value="0.237" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_rotation.xml" value="0.2545" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_search.xml" value="0.178" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_search_gray_24dp.xml" value="0.1295" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_settings.xml" value="0.1475" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_star_rate.xml" value="0.2015" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/more.xml" value="0.215" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/netflix_audio_subtitles.xml" value="0.178" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/netflix_brightness_four.xml" value="0.178" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/netflix_brightness_one.xml" value="0.178" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/netflix_brightness_three.xml" value="0.122" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/netflix_brightness_two.xml" value="0.178" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/netflix_lock_black.xml" value="0.215" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/netflix_pause_button.xml" value="0.2" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/netflix_speed.xml" value="0.178" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/netflix_unlock.xml" value="0.178" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/properties.xml" value="0.178" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/search_input_dark_style.xml" value="0.1295" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/search_input_style.xml" value="0.1295" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/seekbar_progress.xml" value="0.1945" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/seekbar_progress_style.xml" value="0.1945" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/seekbar_track.xml" value="0.1945" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/select_dot.xml" value="0.155" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/share.xml" value="0.178" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/share_link.xml" value="0.178" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/success_background.xml" value="0.2025" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/white_round.xml" value="0.1515" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout-v28/activity_movie_detail.xml" value="0.24479166666666666" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/activity_movie_detail.xml" value="0.2" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/activity_search_move.xml" value="0.2" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/alert_dialog_success.xml" value="0.24479166666666666" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/booster.xml" value="0.24479166666666666" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/bottom_sheet_dialog.xml" value="0.2" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/custom_player.xml" value="0.264" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/fragment_account.xml" value="0.24479166666666666" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/fragment_detail.xml" value="0.24479166666666666" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/fragment_list_favorite_movie.xml" value="0.24479166666666666" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/fragment_login.xml" value="0.24479166666666666" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/fragment_movie_series.xml" value="0.228125" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/fragment_player.xml" value="0.24479166666666666" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/fragment_recommend.xml" value="0.24479166666666666" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/fragment_register.xml" value="0.24479166666666666" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/fragment_search.xml" value="0.24479166666666666" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/fragment_youtube.xml" value="0.24479166666666666" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/item_category.xml" value="0.24004085801838612" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/item_episode.xml" value="0.24479166666666666" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/item_movie.xml" value="0.24004085801838612" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/item_movie_search.xml" value="0.1925925925925926" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/layort_loading_dialog.xml" value="0.1925925925925926" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/layout_error_dialog.xml" value="0.24479166666666666" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/loading.xml" value="0.24004085801838612" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/more_features.xml" value="0.24479166666666666" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/shimmer_placeholder_layout.xml" value="0.14722222222222223" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/speed_dialog.xml" value="0.24479166666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/speedBtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:icon="@drawable/ic_speed"
+            android:text="@string/speed"
+            android:textAllCaps="false"
+            app:iconGravity="top"
+            android:background="?android:selectableItemBackground"
+            android:textColor="@color/white"
+            android:clickable="true"
+            android:focusable="true"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            app:iconTint="@color/white"
+            app:shapeAppearance="@style/curved"
+            app:tint="@color/white"
+            />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/audioBooster"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:icon="@drawable/ic_speaker"
+            android:text="@string/booster"
+            app:iconGravity="top"
+            android:background="?android:selectableItemBackground"
+
+            android:clickable="true"
+            android:focusable="true"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            app:iconTint="@color/white"
+            app:shapeAppearance="@style/curved"
+            app:tint="@color/white"
+            />
+
+    </LinearLayout>
+</LinearLayout>

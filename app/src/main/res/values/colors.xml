@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="redPrimary">#E50914</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#000000</color>
+    <color name="black_500">#525453</color>
+    <color name="ripple_color">#42ffffff</color>
+    <color name="white">#FFFF</color>
+    <color name="redNetflix">#FF0000</color>
+    <color name="navBackground">#121212</color>
+
+
+    <color name="card_bg_color">#f6f6f6</color>
+    <color name="card_bg_dark_color">#0e0e0e</color>
+    <color name="title_text_color">#258bd6</color>
+    <color name="content_text_color">#999da4</color>
+
+    <color name="colorGrey">#dddddd</color>
+
+</resources>

@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.api.load
+import com.bumptech.glide.Glide
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
@@ -27,6 +28,7 @@ import com.example.appmovieandroid.common.CompanionObject
 import com.example.appmovieandroid.common.MoreFeature
 import com.example.appmovieandroid.models.view_model.FragmentViewModel
 import com.example.appmovieandroid.models.movie_detail.MovieDetail
+import com.example.appmovieandroid.models.post_data_server.PostMovieFavorite
 import com.example.appmovieandroid.models.view_model.ConstViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
@@ -108,6 +110,12 @@ class HomeFragment : Fragment() {
         CompanionObject.categoryId = categoryId
         CompanionObject.getMovieDetail {
             handleShowInfoMovieDetail(it)
+            firebaseAuth.currentUser?.let { it1 ->
+                callApiPostAddIntoListMovie(
+                    it, true,
+                    it1.uid
+                )
+            }
             bindingBottomSheetDialog.shimmerFrameLayout.visibility = View.GONE
             bindingBottomSheetDialog.layoutDetail.visibility = View.VISIBLE
 
@@ -120,7 +128,10 @@ class HomeFragment : Fragment() {
     private fun handleShowInfoMovieDetail(movieDetail: MovieDetail) {
         scopeMain.launch {
             bindingBottomSheetDialog.apply {
-                this.image.load(movieDetail.mainImage)
+                Glide.with((this.root))
+                    .load(movieDetail.mainImage)
+                    .placeholder(R.drawable.animation_loading)
+                    .into(this.image)
                 this.title.text = movieDetail.name
                 this.episodeCount.text =
                     if (movieDetail.episodeCount > 0) "Episode Count: " + movieDetail.episodeCount.toString()
@@ -137,6 +148,25 @@ class HomeFragment : Fragment() {
                     bottomSheetDialog.dismiss()
 
                 }
+
+                this.btnAddIntoList.setOnClickListener {
+                    firebaseAuth.currentUser?.let { it1 ->
+                        callApiPostAddIntoListMovie(
+                            movieDetail, false,
+                            it1.uid
+                        )
+                    }
+                }
+
+                this.btnRemove.setOnClickListener {
+                    firebaseAuth.currentUser?.let { it1 ->
+                        callApiPostAddIntoListMovie(
+                            movieDetail, false,
+                            it1.uid
+                        )
+                    }
+
+                }
             }
 
         }
@@ -151,7 +181,33 @@ class HomeFragment : Fragment() {
     }
 
 
+    fun hideAndVisible(check: Int) {
+        if (check == 1) {
+            bindingBottomSheetDialog.btnAddIntoList.visibility = View.VISIBLE
+            bindingBottomSheetDialog.btnRemove.visibility = View.GONE
+        } else {
+            bindingBottomSheetDialog.btnRemove.visibility = View.VISIBLE
+            bindingBottomSheetDialog.btnAddIntoList.visibility = View.GONE
+        }
+    }
 
+
+    fun callApiPostAddIntoListMovie(movieDetail: MovieDetail, checkExist: Boolean, uid: String) {
+        MoreFeature.body = PostMovieFavorite(
+            uid,
+            movieDetail.movieId,
+            movieDetail.categoryId,
+            movieDetail.mainImage,
+            movieDetail.name,
+            checkExist,
+        )
+
+        MoreFeature.addMovieIntoListFavorite {
+            hideAndVisible(it.status)
+        }
+
+
+    }
 
 
     override fun onStart() {

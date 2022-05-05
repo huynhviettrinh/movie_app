@@ -49,6 +49,8 @@
 
     <string name="register">Đăng kí tại đây</string>
     <string name="backLogin">Quay lại đăng nhập</string>
+    <string name="forgotPass">Quên mật khẩu</string>
+
 
     <string name="logout">Logout</string>
     <string name="my_list">My list</string>

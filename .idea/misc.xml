@@ -7,6 +7,7 @@
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable-v24/gradient_nav_bar.xml" value="0.13" />
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/border_block.xml" value="0.19" />
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/border_nlock.xml" value="0.1655" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/bottom_nav_icon_color_selector.xml" value="0.129" />
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/custom_thumb.xml" value="0.1515" />
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/dialog_background.xml" value="0.2025" />
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/edit.xml" value="0.1515" />
@@ -22,7 +23,10 @@
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_down.xml" value="0.122" />
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_email.xml" value="0.159" />
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_error_24.xml" value="0.122" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_filter.xml" value="0.18" />
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_forward.xml" value="0.122" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_home.xml" value="0.1645" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_home_work.xml" value="0.1645" />
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_menu.xml" value="0.178" />
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_menu_more.xml" value="0.122" />
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/drawable/ic_next.xml" value="0.1605" />
@@ -59,6 +63,8 @@
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout-v28/activity_movie_detail.xml" value="0.24479166666666666" />
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/activity_movie_detail.xml" value="0.2" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/activity_movie_detail2.xml" value="0.24479166666666666" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/activity_movie_detail3.xml" value="0.24479166666666666" />
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/activity_search_move.xml" value="0.2" />
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/alert_dialog_success.xml" value="0.24479166666666666" />
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/booster.xml" value="0.24479166666666666" />
@@ -67,7 +73,9 @@
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/fragment_account.xml" value="0.24479166666666666" />
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/fragment_detail.xml" value="0.24479166666666666" />
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/fragment_fogot_pass1.xml" value="0.24004085801838612" />
-        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/fragment_forgot_pass.xml" value="0.24479166666666666" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/fragment_home2.xml" value="0.24479166666666666" />
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/fragment_list_favorite_movie.xml" value="0.24479166666666666" />
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/fragment_login.xml" value="0.24479166666666666" />
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/fragment_movie_series.xml" value="0.228125" />
@@ -86,6 +94,7 @@
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/more_features.xml" value="0.24479166666666666" />
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/shimmer_placeholder_layout.xml" value="0.14722222222222223" />
         <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/layout/speed_dialog.xml" value="0.24479166666666666" />
+        <entry key="..\:/Users/trinh/Desktop/App Movie/app/src/main/res/menu/bottom_nav.xml" value="0.23333333333333334" />
       </map>
     </option>
   </component>

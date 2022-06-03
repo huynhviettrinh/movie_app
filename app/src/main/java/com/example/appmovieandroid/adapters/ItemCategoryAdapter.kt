@@ -1,6 +1,7 @@
 package com.example.appmovieandroid.adapters
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,9 +12,11 @@ import com.example.appmovieandroid.models.MovieCategory
 class ItemCategoryAdapter(
     private val listMovieCategory: List<MovieCategory>,
     private val context: Context,
-    private val uid : String
+    private val uid : String,
+    private val isFragmentHome2Binding: Boolean,
 
-) : RecyclerView.Adapter<ItemCategoryAdapter.ViewHolder>() {
+
+    ) : RecyclerView.Adapter<ItemCategoryAdapter.ViewHolder>() {
 
     class ViewHolder(binding: ItemCategoryBinding) : RecyclerView.ViewHolder(binding.root) {
         val recyclerviewCategory = binding.itemCategory
@@ -44,7 +47,7 @@ class ItemCategoryAdapter(
             RecyclerView.HORIZONTAL,
             false
         )
-        holder.recyclerviewCategory.adapter = ItemMovieAdapter(itemMovieAdapter.listMovie, context,uid)
+        holder.recyclerviewCategory.adapter = ItemMovieAdapter(itemMovieAdapter.listMovie, context,uid,isFragmentHome2Binding)
     }
 
     override fun getItemCount(): Int = listMovieCategory.size

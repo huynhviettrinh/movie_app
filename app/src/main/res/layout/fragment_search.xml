@@ -7,14 +7,13 @@
     android:orientation="vertical"
     tools:context=".fragment.SearchFragment">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/block"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
 
         <ImageView
             android:id="@+id/btnBack"
@@ -30,15 +29,29 @@
 
         <TextView
             android:id="@+id/textSearch"
-            android:text="Search movie"
-            android:gravity="center"
-            android:textColor="@color/black_500"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
+            android:gravity="center"
+            android:text="Search movie"
+            android:textColor="@color/black_500"
+            android:textSize="25sp"
             android:textStyle="bold"
-            android:textSize="25sp"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnBack"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/btnFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:src="@drawable/ic_filter"
+            android:translationZ="90dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <com.facebook.shimmer.ShimmerFrameLayout

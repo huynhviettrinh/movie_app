@@ -13,14 +13,17 @@ import com.bumptech.glide.Glide
 import com.ddd.androidutils.DoubleClick
 import com.ddd.androidutils.DoubleClickListener
 import com.example.appmovieandroid.MovieDetailActivity
+import com.example.appmovieandroid.MovieDetailActivity2
 import com.example.appmovieandroid.R
 import com.example.appmovieandroid.databinding.BottomSheetDialogBinding
 import com.example.appmovieandroid.databinding.ItemMovieBinding
 import com.example.appmovieandroid.common.CompanionObject
 import com.example.appmovieandroid.common.MoreFeature
+import com.example.appmovieandroid.databinding.FragmentHome2Binding
 import com.example.appmovieandroid.models.Movie
 import com.example.appmovieandroid.models.post_data_server.PostMovieFavorite
 import com.example.appmovieandroid.models.movie_detail.MovieDetail
+import com.example.appmovieandroid.models.movie_detail.MovieDetail2
 import com.example.appmovieandroid.models.view_model.ConstViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.coroutines.CoroutineScope
@@ -34,8 +37,10 @@ import java.io.Serializable
 class ItemMovieAdapter(
     private val listMovie: List<Movie>,
     private val context: Context,
-    private val uid: String
-) : RecyclerView.Adapter<ItemMovieAdapter.ViewHolder>() {
+    private val uid: String,
+    private val isFragmentHome2Binding: Boolean,
+
+    ) : RecyclerView.Adapter<ItemMovieAdapter.ViewHolder>() {
     private lateinit var bottomSheetDialog: BottomSheetDialog
     private lateinit var bindingBottomSheetDialog: BottomSheetDialogBinding
     private lateinit var bottomSheetDialogLayout: View
@@ -72,17 +77,29 @@ class ItemMovieAdapter(
 
         val doubleClick = DoubleClick(object : DoubleClickListener {
             override fun onSingleClickEvent(view: View?) {
+                bindingBottomSheetDialog.layoutDetail.visibility = View.GONE
+                bindingBottomSheetDialog.shimmerFrameLayout.visibility = View.VISIBLE
                 bottomSheetDialog.show()
                 bottomSheetDialog.setContentView(bottomSheetDialogLayout)
                 bindingBottomSheetDialog.shimmerFrameLayout.startShimmerAnimation()
 
                 CompanionObject.movieId = movie.movieId
                 CompanionObject.categoryId = movie.categoryId
-                CompanionObject.getMovieDetail {
-                    handleShowInfoMovieDetail(it)
-                    callApiPostAddIntoListMovie(it, checkExist = true)
-                    bindingBottomSheetDialog.layoutDetail.visibility = View.VISIBLE
-                    bindingBottomSheetDialog.shimmerFrameLayout.visibility = View.GONE
+
+                if (isFragmentHome2Binding) {
+                    CompanionObject.getDetailMovie {
+                        handleShowInfoMovieDetail2(it)
+                        callApiPostAddIntoListMovie2(it, checkExist = true)
+                        bindingBottomSheetDialog.layoutDetail.visibility = View.VISIBLE
+                        bindingBottomSheetDialog.shimmerFrameLayout.visibility = View.GONE
+                    }
+                } else {
+                    CompanionObject.getMovieDetail {
+                        handleShowInfoMovieDetail(it)
+                        callApiPostAddIntoListMovie(it, checkExist = true)
+                        bindingBottomSheetDialog.layoutDetail.visibility = View.VISIBLE
+                        bindingBottomSheetDialog.shimmerFrameLayout.visibility = View.GONE
+                    }
                 }
             }
 
@@ -126,14 +143,11 @@ class ItemMovieAdapter(
                 intentMovieDetailActivity(movieDetail)
                 bottomSheetDialog.dismiss()
             }
-
             this.btnAddIntoList.setOnClickListener {
                 callApiPostAddIntoListMovie(movieDetail, false)
             }
-
             this.btnRemove.setOnClickListener {
                 callApiPostAddIntoListMovie(movieDetail, false)
-
             }
 
         }
@@ -180,4 +194,56 @@ class ItemMovieAdapter(
     }
 
 
+    ///////////////////////////////////////////////////////////////////
+
+    @SuppressLint("SetTextI18n")
+    private fun handleShowInfoMovieDetail2(movieDetail: MovieDetail2) {
+        bindingBottomSheetDialog.apply {
+            Glide.with((this.root))
+                .load(movieDetail.mainImage)
+                .placeholder(R.drawable.animation_loading)
+                .into(this.image)
+            this.title.text = movieDetail.name
+            this.episodeCount.text =
+                if (movieDetail.episodeCount > 0) "Episode Count: " + movieDetail.episodeCount.toString()
+                else "Phim Lẻ"
+            this.releaseYear.text = "Release: " + movieDetail.releaseYear
+            this.score.text = movieDetail.score.toString()
+            this.nation.text = "Nation: " + movieDetail.nation
+            this.category.text = "Category: " + movieDetail.category.joinToString(", ")
+
+            this.btnPlay.setOnClickListener {
+                intentMovieDetailActivity2(movieDetail)
+                bottomSheetDialog.dismiss()
+            }
+            this.btnAddIntoList.setOnClickListener {
+                callApiPostAddIntoListMovie2(movieDetail, false)
+            }
+            this.btnRemove.setOnClickListener {
+                callApiPostAddIntoListMovie2(movieDetail, false)
+            }
+
+        }
+    }
+
+    private fun callApiPostAddIntoListMovie2(movieDetail: MovieDetail2, checkExist: Boolean) {
+        MoreFeature.body = PostMovieFavorite(
+            uid,
+            movieDetail.movieId,
+            movieDetail.categoryId,
+            movieDetail.mainImage,
+            movieDetail.name,
+            checkExist,
+        )
+
+        MoreFeature.addMovieIntoListFavorite {
+            hideAndVisible(it.status)
+        }
+    }
+
+    private fun intentMovieDetailActivity2(movieDetail: MovieDetail2) {
+        val intent = Intent(context, MovieDetailActivity2::class.java)
+        intent.putExtra("MovieDetail", movieDetail as Serializable)
+        context.startActivity(intent)
+    }
 }

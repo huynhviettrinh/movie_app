@@ -2,10 +2,14 @@ package com.example.appmovieandroid
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.ui.onNavDestinationSelected
+import androidx.navigation.ui.setupWithNavController
 import com.example.appmovieandroid.databinding.ActivityMainBinding
 import com.example.appmovieandroid.common.CompanionObject
 import com.example.appmovieandroid.common.MoreFeature
@@ -41,6 +45,7 @@ class MainActivity : AppCompatActivity() {
         callCategoryMovieApiData()
         callApiDataMovieBanner()
         navController = findNavController(R.id.fragmentContainerView)
+        binding.bottomBarNav.setupWithNavController(navController)
 
         //TODO Chuyen mang hinh chính
 //        scopeMain.launch {
@@ -71,6 +76,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun setStoreViewModel() {
         firebaseAuth.currentUser?.let { viewModels.setUidUser(it.uid) }
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
     }
 
 }

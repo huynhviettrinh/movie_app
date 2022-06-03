@@ -20,11 +20,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
+import com.example.appmovieandroid.MovieDetailActivity.Companion.currentTimeVideo
+import com.example.appmovieandroid.MovieDetailActivity.Companion.filterSubtitle
+import com.example.appmovieandroid.MovieDetailActivity.Companion.getListLanguageString
+import com.example.appmovieandroid.MovieDetailActivity.Companion.linkM3u8
+import com.example.appmovieandroid.MovieDetailActivity.Companion.listSub
+import com.example.appmovieandroid.MovieDetailActivity.Companion.loudnessEnhancer
+import com.example.appmovieandroid.MovieDetailActivity.Companion.nameMovie
+import com.example.appmovieandroid.MovieDetailActivity.Companion.positionEpisode
+import com.example.appmovieandroid.MovieDetailActivity.Companion.selectedSubIndex
+import com.example.appmovieandroid.MovieDetailActivity.Companion.speed
 import com.example.appmovieandroid.adapters.EpisodeAdapter
-import com.example.appmovieandroid.adapters.ViewPagerAdapter
+import com.example.appmovieandroid.adapters.EpisodeAdapter2
 import com.example.appmovieandroid.common.CompanionObject
 import com.example.appmovieandroid.databinding.*
-import com.example.appmovieandroid.models.Movie
 import com.example.appmovieandroid.models.movie_detail.*
 import com.example.appmovieandroid.models.view_model.FragmentViewModel
 import com.google.android.exoplayer2.C
@@ -43,8 +52,8 @@ import kotlinx.coroutines.launch
 import java.text.DecimalFormat
 
 
-class MovieDetailActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMovieDetailBinding
+class MovieDetailActivity2 : AppCompatActivity() {
+    private lateinit var binding: ActivityMovieDetail2Binding
     private lateinit var bindingCustomPlayerBinding: CustomPlayerBinding
     private val fragmentViewModel: FragmentViewModel by viewModels()
     private var handler = Handler(Looper.getMainLooper())
@@ -75,57 +84,6 @@ class MovieDetailActivity : AppCompatActivity() {
 
     private lateinit var dialogLoading: AlertDialog
 
-    companion object {
-        var nameMovie = ""
-        var positionEpisode = -1
-        lateinit var loudnessEnhancer: LoudnessEnhancer
-
-        //SPEED CHANGE
-        var speed: Float = 1.0f
-
-        var listSub: Array<Subtitle> = arrayOf()
-        private lateinit var listLanguage: Array<String>
-        var selectedSubIndex = -1
-        var linkM3u8 = ""
-        var currentTimeVideo: Long = 0
-
-
-        fun filterResolution(listResolution: List<Resolution>): Resolution {
-            val resolution = Resolution("GROOT_LD","540P")
-            for (resolutionItem in listResolution) {
-                when (resolutionItem.code) {
-                    "GROOT_HD" -> return resolutionItem
-                    "GROOT_SD" -> return resolutionItem
-                    "GROOT_LD" -> return resolutionItem
-                }
-            }
-            return resolution
-        }
-
-        fun filterSubtitle(listSubs: Array<Subtitle>): String {
-            listSub = listSubs
-            var sub = ""
-            for (subItem in listSub) {
-                if (subItem.languageAbbr == "en") {
-                    sub = subItem.subtitlingUrl
-                    return sub
-                } else if (subItem.languageAbbr == "vi") {
-                    sub = subItem.subtitlingUrl
-                    return sub
-                }
-            }
-            return sub
-        }
-
-        fun getListLanguageString(listSub: Array<Subtitle>): Array<String> {
-            listLanguage = Array(listSub.size) { "" }
-            for ((i, element) in listSub.withIndex()) {
-                listLanguage[i] = element.language
-            }
-            return listLanguage
-        }
-
-    }
 
     private fun assignViewValue() {
         buttonPlayPause = findViewById(R.id.videoView_play_pause_btn)
@@ -145,7 +103,7 @@ class MovieDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         try {
             super.onCreate(savedInstanceState)
-            binding = ActivityMovieDetailBinding.inflate(layoutInflater)
+            binding = ActivityMovieDetail2Binding.inflate(layoutInflater)
             bindingCustomPlayerBinding = CustomPlayerBinding.inflate(layoutInflater)
             setContentView(binding.root)
 
@@ -158,7 +116,7 @@ class MovieDetailActivity : AppCompatActivity() {
             initRunnableHandleDuration()
 
             // Data from adapter
-            val movieDetail = intent?.getSerializableExtra("MovieDetail")!! as MovieDetail
+            val movieDetail = intent?.getSerializableExtra("MovieDetail")!! as MovieDetail2
             nameMovie = movieDetail.name
 
             // for youtube
@@ -174,7 +132,6 @@ class MovieDetailActivity : AppCompatActivity() {
                 movieDetail.name
             )
 
-            setTabLayout(movieDetail.relatedSeries, movieDetail.recommendMovies)
 
             hideSystemBar()
 
@@ -189,13 +146,11 @@ class MovieDetailActivity : AppCompatActivity() {
     }
 
     private fun showConfirmationDialog(listStringLanguage: Array<String>) {
-
         MaterialAlertDialogBuilder(this)
             .setTitle("Select subtitle")
             .setSingleChoiceItems(listStringLanguage, selectedSubIndex) { _, index ->
                 selectedSubIndex = index
                 currentTimeVideo = simpleExoPlayer.currentPosition
-
             }
             .setPositiveButton("OK") { _, _ ->
                 if (selectedSubIndex != -1) {
@@ -210,12 +165,8 @@ class MovieDetailActivity : AppCompatActivity() {
         pauseVideo()
     }
 
-    private fun handleClickAction(listEpisode: List<EpisodeDetail>) {
-
+    private fun handleClickAction(listEpisode: List<EpisodeDetail2>) {
         binding.playVideo.setOnClickListener {
-
-            CompanionObject.definition = filterResolution(listEpisode[0].resolution).code
-
             CompanionObject.episodeId = listEpisode[0].episodeId
             try {
                 listSub = listEpisode[0].subtitles.toTypedArray()
@@ -302,8 +253,9 @@ class MovieDetailActivity : AppCompatActivity() {
 
         blockRotateScreen.setOnClickListener {
             openFullscreenDialog()
-
         }
+
+
 
         backBtn.setOnClickListener {
             closeFullscreenDialog()
@@ -447,8 +399,6 @@ class MovieDetailActivity : AppCompatActivity() {
     private fun playVideo() {
         buttonPlayPause.setImageResource(R.drawable.netflix_pause_button)
         simpleExoPlayer.play()
-
-
     }
 
     // handle ham su ly duration
@@ -484,13 +434,6 @@ class MovieDetailActivity : AppCompatActivity() {
         return String.format("%02d:%02d:%02d", hours, minutes, seconds)
     }
 
-    private fun setInit(numb: Int) {
-        val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager, numb)
-        binding.viewPager.adapter = viewPagerAdapter
-        binding.tableLayout.setupWithViewPager(binding.viewPager)
-        binding.tableLayout.tag = 1
-    }
-
     //Hide system bar
     @Suppress("DEPRECATION")
     private fun hideSystemBar() {
@@ -522,25 +465,13 @@ class MovieDetailActivity : AppCompatActivity() {
 
     }
 
-    private fun setTabLayout(
-        relatedSeries: List<Movie>,
-        recommendMovie: List<Movie>
-    ) {
-        if (relatedSeries.isEmpty()) {
-            fragmentViewModel.setMovieRecommend(recommendMovie)
-            setInit(1)
-        } else {
-            fragmentViewModel.setMovieRelatedSeries(relatedSeries)
-            fragmentViewModel.setMovieRecommend(recommendMovie)
-            setInit(2)
-        }
-    }
 
-    private fun initListEpisode(listEpisode: List<EpisodeDetail>, episodeCount: Int) {
+
+    private fun initListEpisode(listEpisode: List<EpisodeDetail2>, episodeCount: Int) {
         if (episodeCount > 0) {
             binding.playVideo.visibility = View.GONE
             binding.recyclerviewEpisode.layoutManager = GridLayoutManager(this, 3)
-            binding.recyclerviewEpisode.adapter = EpisodeAdapter(
+            binding.recyclerviewEpisode.adapter = EpisodeAdapter2(
                 listEpisode,
             ) { callGetMovieMedia(listEpisode[positionEpisode].subtitles.toTypedArray()) }
         }
@@ -576,17 +507,6 @@ class MovieDetailActivity : AppCompatActivity() {
         simpleExoPlayer.play()
 
 
-//        simpleExoPlayer.seekTo(0)
-//        val dataSourceFactory: DataSource.Factory = DefaultDataSourceFactory(
-//            this,
-//            Util.getUserAgent(this, applicationInfo.name)
-//        )
-//        mediaSource = HlsMediaSource.Factory(dataSourceFactory).createMediaSource(
-//            MediaItem.fromUri(m3u8)
-//        )
-//        simpleExoPlayer.setMediaSource(mediaSource)
-//        simpleExoPlayer.prepare()
-
 
     }
 
@@ -600,7 +520,7 @@ class MovieDetailActivity : AppCompatActivity() {
         pauseVideo()
 
         scopeMain.launch {
-            CompanionObject.getMovieMedia {
+            CompanionObject.getMediaMovie {
                 linkM3u8 = it.mediaUrl
                 binding.blockPlayer.visibility = View.VISIBLE
                 binding.blockTrailer.visibility = View.GONE
@@ -650,24 +570,18 @@ class MovieDetailActivity : AppCompatActivity() {
         initFullscreenDialog()
         simpleExoPlayer.playWhenReady = true
         playVideo()
-
-        Log.v("VVV","onResume")
     }
 
     override fun onPause() {
         super.onPause()
         pauseVideo()
         simpleExoPlayer.playWhenReady = false
-        Log.v("VVV","onPause")
-
     }
 
     override fun onStop() {
         super.onStop()
         pauseVideo()
         simpleExoPlayer.playWhenReady = false
-        Log.v("VVV","onStop")
-
     }
 
     override fun onDestroy() {
@@ -677,8 +591,6 @@ class MovieDetailActivity : AppCompatActivity() {
         simpleExoPlayer.clearMediaItems()
         selectedSubIndex = -1
         window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        Log.v("VVV","onDestroy")
-
     }
 
 

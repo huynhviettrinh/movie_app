@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.appmovieandroid.R
+import com.example.appmovieandroid.common.CompanionObject
 import com.example.appmovieandroid.common.MoreFeature
 import com.example.appmovieandroid.databinding.FragmentLoginBinding
 import com.example.appmovieandroid.models.view_model.ConstViewModel
@@ -88,8 +89,7 @@ class LoginFragment : Fragment() {
                         MoreFeature.listMovieFavoriteByUid { listMovieFavorite ->
                             model.setMovieFavorite(listMovieFavorite)
                         }
-
-
+                        CompanionObject.isWelcome = true
                         findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                     }
 

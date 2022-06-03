@@ -128,6 +128,11 @@ class SearchFragment : Fragment() {
                 ContextCompat.getColor(requireContext(), R.color.white),
                 PorterDuff.Mode.MULTIPLY
             )
+            @Suppress("DEPRECATION")
+            binding.btnFilter.setColorFilter(
+                ContextCompat.getColor(requireContext(), R.color.white),
+                PorterDuff.Mode.MULTIPLY
+            )
         } else {
             binding.textSearch.setTextColor(resources.getColor(R.color.black_500))
             binding.searchInput.setBackgroundResource(R.drawable.search_input_style)
@@ -138,6 +143,10 @@ class SearchFragment : Fragment() {
                 )
             )
             binding.btnBack.setColorFilter(
+                ContextCompat.getColor(requireContext(), R.color.black),
+                PorterDuff.Mode.MULTIPLY
+            )
+            binding.btnFilter.setColorFilter(
                 ContextCompat.getColor(requireContext(), R.color.black),
                 PorterDuff.Mode.MULTIPLY
             )

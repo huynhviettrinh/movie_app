@@ -58,7 +58,6 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         binding = FragmentHomeBinding.bind(view)
         firebaseAuth = FirebaseAuth.getInstance()
-
         getListMovieCategory()
         getListMovieBanner()
         handleListenerEvent()
@@ -80,7 +79,7 @@ class HomeFragment : Fragment() {
             binding.recyclerviewHome.setHasFixedSize(true)
 
             binding.recyclerviewHome.adapter =
-                firebaseAuth.uid?.let { it1 -> ItemCategoryAdapter(it, requireContext(), it1) }
+                firebaseAuth.uid?.let { it1 -> ItemCategoryAdapter(it, requireContext(), it1,false) }
 
         }
 
@@ -205,8 +204,6 @@ class HomeFragment : Fragment() {
         MoreFeature.addMovieIntoListFavorite {
             hideAndVisible(it.status)
         }
-
-
     }
 
 
@@ -214,7 +211,10 @@ class HomeFragment : Fragment() {
         super.onStart()
         val firebaseUser = firebaseAuth.currentUser
         if (firebaseUser != null) {
-            Toast.makeText(requireContext(), "Welcome", Toast.LENGTH_LONG).show()
+            if (CompanionObject.isWelcome) {
+                Toast.makeText(requireContext(), "Welcome you comeback", Toast.LENGTH_LONG).show()
+                CompanionObject.isWelcome = false
+            }
         } else {
             findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
         }

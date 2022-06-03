@@ -16,6 +16,11 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".MovieDetailActivity2"
+            android:configChanges="orientation|keyboard|layoutDirection|screenSize|screenLayout"
+            android:exported="false"
+            android:launchMode="singleTask" />
+        <activity
             android:name=".MovieDetailActivity"
             android:configChanges="orientation|keyboard|layoutDirection|screenSize|screenLayout"
             android:exported="false"

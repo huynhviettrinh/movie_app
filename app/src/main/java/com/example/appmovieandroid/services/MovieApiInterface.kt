@@ -1,9 +1,6 @@
 package com.example.appmovieandroid.services
 
-import com.example.appmovieandroid.models.movie_response.MovieModelResponse
-import com.example.appmovieandroid.models.movie_response.MovieCategoryResponse
-import com.example.appmovieandroid.models.movie_response.MovieDetailResponse
-import com.example.appmovieandroid.models.movie_response.MovieMediaResponse
+import com.example.appmovieandroid.models.movie_response.*
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -35,4 +32,21 @@ interface MovieApiInterface {
         @Query("searchKeyWord") searchKeyWord: String,
     ): Call<MovieModelResponse>
 
+    //--------------------------------------------------//
+
+    @GET("/getListMovieFilmSeries")
+    fun getListMovie(): Call<MovieCategoryResponse>
+
+    @GET("/getMovieDetail?")
+    fun getDetailMovie(
+        @Query("id") id: Int,
+        @Query("category") category: Int
+    ): Call<MovieDetailResponse2>
+
+    @GET("/getMediaMovie?")
+    fun getMediaMovie(
+        @Query("categoryId") categoryId: Int,
+        @Query("movieId") movieId: Int,
+        @Query("episodeId") episodeId: Int,
+    ): Call<MovieMediaResponse>
 }

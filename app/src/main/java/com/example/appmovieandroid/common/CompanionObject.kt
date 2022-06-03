@@ -2,11 +2,9 @@ package com.example.appmovieandroid.common
 
 import android.util.Log
 import com.example.appmovieandroid.models.*
-import com.example.appmovieandroid.models.movie_response.MovieCategoryResponse
-import com.example.appmovieandroid.models.movie_response.MovieDetailResponse
 import com.example.appmovieandroid.models.movie_detail.MovieDetail
-import com.example.appmovieandroid.models.movie_response.MovieModelResponse
-import com.example.appmovieandroid.models.movie_response.MovieMediaResponse
+import com.example.appmovieandroid.models.movie_detail.MovieDetail2
+import com.example.appmovieandroid.models.movie_response.*
 import com.example.appmovieandroid.services.MovieApiInterface
 import com.example.appmovieandroid.services.MovieApiService
 import retrofit2.Call
@@ -22,6 +20,7 @@ class CompanionObject {
         var episodeId: Int = 0
         var definition: String = ""
         var keyword = ""
+        var isWelcome = false
 
 
         // TODO get list movie by page
@@ -94,7 +93,6 @@ class CompanionObject {
                     override fun onFailure(call: Call<MovieMediaResponse>, t: Throwable) {
                         Log.e("Failure", "getMovieMedia:" + t.message)
                     }
-
                 })
         }
 
@@ -111,6 +109,63 @@ class CompanionObject {
                     }
                     override fun onFailure(call: Call<MovieModelResponse>, t: Throwable) {
                         Log.e("Failure", "getMovieSearchWithKeyWord:" + t.message)
+                    }
+                })
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////////
+
+
+        fun getListMovie(callBack: (List<MovieCategory>) -> Unit) {
+            val apiService = MovieApiService.getInstance().create(MovieApiInterface::class.java)
+            apiService.getListMovie().enqueue(object : Callback<MovieCategoryResponse> {
+                override fun onResponse(
+                    call: Call<MovieCategoryResponse>,
+                    response: Response<MovieCategoryResponse>
+                ) {
+                    return callBack(response.body()!!.movie)
+                }
+
+                override fun onFailure(call: Call<MovieCategoryResponse>, t: Throwable) {
+                    Log.e("Failure", "getListMovie:" + t.message)
+                }
+            })
+        }
+
+        fun getDetailMovie(callBack: (MovieDetail2) -> Unit) {
+            try {
+                val apiService = MovieApiService.getInstance().create(MovieApiInterface::class.java)
+                apiService.getDetailMovie(movieId, categoryId)
+                    .enqueue(object : Callback<MovieDetailResponse2> {
+                        override fun onResponse(
+                            call: Call<MovieDetailResponse2>,
+                            response: Response<MovieDetailResponse2>
+                        ) {
+                            return callBack(response.body()!!.movieDetail)
+                        }
+
+                        override fun onFailure(call: Call<MovieDetailResponse2>, t: Throwable) {
+                            Log.e("Failure", "getDetailMovie:" + t.message)
+                        }
+                    })
+            } catch (e: Exception) {
+                Log.v("getDetailMovie", e.toString())
+
+            }
+        }
+
+        fun getMediaMovie(callBack: (MovieMedia) -> Unit) {
+            val apiService = MovieApiService.getInstance().create(MovieApiInterface::class.java)
+                apiService.getMediaMovie(categoryId, movieId, episodeId)
+                .enqueue(object : Callback<MovieMediaResponse> {
+                    override fun onResponse(
+                        call: Call<MovieMediaResponse>,
+                        response: Response<MovieMediaResponse>
+                    ) {
+                        return callBack(response.body()!!.movieMedia)
+                    }
+                    override fun onFailure(call: Call<MovieMediaResponse>, t: Throwable) {
+                        Log.e("Failure", "getMediaMovie:" + t.message)
                     }
                 })
         }
